@@ -8,17 +8,17 @@
   
   
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>Exclusive Functions - extendedmode</title>
+  <title>Functions - extendedmode</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
-  <link href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  <link href="../css/extra.css" rel="stylesheet">
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Exclusive Functions";
+    var mkdocs_page_name = "Functions";
     var mkdocs_page_input_path = "functions.md";
     var mkdocs_page_url = null;
   </script>
@@ -47,108 +47,34 @@
       </div>
 
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-	<ul class="tocbase current">
-    
-    
-      
-
-
-  <li class="navtree toctree-l1 inactive">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
     <a class="" href="..">extendedmode</a>
-  </li>
-    
-      
-
-
-  
-    
-    <li class="navtree toctree-l1 page current">
-      <a class="current" href="./">
-        Exclusive Functions
-      </a>
-    </li>
-    
-      
-
-
-
-  <li class="toctree-l1 current">
-    <ul class="subnav-l1 current">
-    
-      
+	    </li>
           
-
-  <li class="toctree-l2 current with-children">
-    <a href="#exmgameplayanim">
-      ExM.Game.PlayAnim
-      <span class="toctree-expand"></span>
-    </a>
-  </li>
-
-
-
-  <li class="toctree-l2 current">
-    <ul class="subnav-l2 current">
+            <li class="toctree-l1 current">
+		
+    <a class="current" href="./">Functions</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l2"><a href="#exmgameplayanim">ExM.Game.PlayAnim</a></li>
     
-      
-        <li class="toctree-l3">
-          <a class="toctree-l4" href="#parameters">Parameters</a>
-        </li>
+
+    <li class="toctree-l2"><a href="#exmgamecreateped">ExM.Game.CreatePed</a></li>
     
-      
-        <li class="toctree-l3">
-          <a class="toctree-l4" href="#example">Example</a>
-        </li>
-    
+
     </ul>
-  </li>
-
-      
-    
-      
+	    </li>
           
-
-  <li class="toctree-l2">
-    <a href="#exmgamecreateped">
-      ExM.Game.CreatePed
-      <span class="toctree-expand"></span>
-    </a>
-  </li>
-
-
-
-  <li class="toctree-l2">
-    <ul class="subnav-l2 toc-hidden">
-    
-      
-        <li class="toctree-l3">
-          <a class="toctree-l4" href="#parameters_1">Parameters</a>
-        </li>
-    
-      
-        <li class="toctree-l3">
-          <a class="toctree-l4" href="#example_1">Example</a>
-        </li>
-    
-    </ul>
-  </li>
-
-      
-    
-    </ul>
-  </li>
-
-
-  
-    
-      
-
-
-  <li class="navtree toctree-l1 inactive">
+            <li class="toctree-l1">
+		
     <a class="" href="../legal/">Legal</a>
-  </li>
-    
-  </ul>
+	    </li>
+          
+        </ul>
       </div>
       &nbsp;
     </nav>
@@ -170,7 +96,7 @@
     
       
     
-    <li>Exclusive Functions</li>
+    <li>Functions</li>
     <li class="wy-breadcrumbs-aside">
       
         <a href="https://github.com/extendedmode/extendedmode.github.io/edit/master/docs/functions.md"
@@ -183,14 +109,20 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="exclusive-functions">Exclusive Functions</h1>
+                <h1>Exclusive Functions</h1>
+
 <p>Functions exclusive to the extendedmode framework</p>
-<h2 id="exmgameplayanim">ExM.Game.PlayAnim</h2>
-<pre><code class="lua">ExM.Game.PlayAnim(animDict, animName, upperbodyOnly, duration)
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For these functions to work you must be using the extendedmode method of importing functions.
+To do this simply add <code>shared_script '@extendedmode/imports.lua'</code> to your fxmanifest.lua.</p>
+</div>
+<h2 id="exmgameplayanim">ExM.Game.PlayAnim<a class="headerlink" href="#exmgameplayanim" title="Permanent link">&para;</a></h2>
+<pre><code>ExM.Game.PlayAnim(animDict, animName, upperbodyOnly, duration)
 </code></pre>
 
-<p>This function is a quick and easy way to play any animation you want without having to request animation dictionaries or specify a heap of parameters.</p>
-<h3 id="parameters">Parameters</h3>
+<p>This function is a quick and easy way to play any animation you want without having to request animation dictionaries or specify a heap of parameters.
+<h3>Parameters</h3></p>
 <table>
 <thead>
 <tr>
@@ -232,17 +164,18 @@
 </tr>
 </tbody>
 </table>
-<h3 id="example">Example</h3>
-<pre><code class="lua">ExM.Game.PlayAnim(&quot;mini@sprunk&quot;, &quot;plyr_buy_drink_pt1&quot;, false, 1500)
+<h3>Example</h3>
+
+<pre><code>ExM.Game.PlayAnim(&quot;mini@sprunk&quot;, &quot;plyr_buy_drink_pt1&quot;, false, 1500)
 </code></pre>
 
 <hr />
-<h2 id="exmgamecreateped">ExM.Game.CreatePed</h2>
-<pre><code class="lua">ExM.Game.CreatePed(pedModel, pedCoords, isNetworked, pedType)
+<h2 id="exmgamecreateped">ExM.Game.CreatePed<a class="headerlink" href="#exmgamecreateped" title="Permanent link">&para;</a></h2>
+<pre><code>ExM.Game.CreatePed(pedModel, pedCoords, isNetworked, pedType)
 </code></pre>
 
-<p>This function is a quick and easy way to create a ped without having to request models or anything, you can choose whether or not to store the ped in a variable or not.</p>
-<h3 id="parameters_1">Parameters</h3>
+<p>This function is a quick and easy way to create a ped without having to request models or anything, you can choose whether or not to store the ped in a variable or not.
+<h3>Parameters</h3></p>
 <table>
 <thead>
 <tr>
@@ -284,8 +217,9 @@
 </tr>
 </tbody>
 </table>
-<h3 id="example_1">Example</h3>
-<pre><code class="lua">local coords = GetEntityCoords(PlayerPedId())
+<h3>Example</h3>
+
+<pre><code>local coords = GetEntityCoords(PlayerPedId())
 local ped = ExM.Game.CreatePed(`a_m_m_acult_01`, vec4(coords.xyz, 180.0), true, 27)
 </code></pre>
 
