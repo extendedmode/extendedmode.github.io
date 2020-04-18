@@ -70,6 +70,15 @@
     <li class="toctree-l3"><a href="#exmgamecreateped">ExM.Game.CreatePed</a></li>
     
 
+    <li class="toctree-l3"><a href="#exmmarkersadd">ExM.Markers.Add</a></li>
+    
+
+    <li class="toctree-l3"><a href="#exmmarkersremove">ExM.Markers.Remove</a></li>
+    
+
+    <li class="toctree-l3"><a href="#exmmarkersin">ExM.Markers.In</a></li>
+    
+
     </ul>
                 </li>
                 <li class="">
@@ -144,7 +153,7 @@ To do this simply add <code>shared_script '@extendedmode/imports.lua'</code> to 
 </div>
 <hr />
 <h2 id="exmgameplayanim">ExM.Game.PlayAnim<a class="headerlink" href="#exmgameplayanim" title="Permanent link">&para;</a></h2>
-<pre><code>ExM.Game.PlayAnim(animDict, animName, upperbodyOnly, duration)
+<pre><code class="lua">ExM.Game.PlayAnim(animDict, animName, upperbodyOnly, duration)
 </code></pre>
 
 <p>This function is a quick and easy way to play any animation you want without having to request animation dictionaries or specify a heap of parameters.
@@ -192,12 +201,12 @@ To do this simply add <code>shared_script '@extendedmode/imports.lua'</code> to 
 </table>
 <h3>Example</h3>
 
-<pre><code>ExM.Game.PlayAnim(&quot;mini@sprunk&quot;, &quot;plyr_buy_drink_pt1&quot;, false, 1500)
+<pre><code class="lua">ExM.Game.PlayAnim(&quot;mini@sprunk&quot;, &quot;plyr_buy_drink_pt1&quot;, false, 1500)
 </code></pre>
 
 <hr />
 <h2 id="exmgamecreateped">ExM.Game.CreatePed<a class="headerlink" href="#exmgamecreateped" title="Permanent link">&para;</a></h2>
-<pre><code>ExM.Game.CreatePed(pedModel, pedCoords, isNetworked, pedType)
+<pre><code class="lua">ExM.Game.CreatePed(pedModel, pedCoords, isNetworked, pedType)
 </code></pre>
 
 <p>This function is a quick and easy way to create a ped without having to request models or anything, you can choose whether or not to store the ped in a variable or not.
@@ -222,7 +231,7 @@ To do this simply add <code>shared_script '@extendedmode/imports.lua'</code> to 
 </tr>
 <tr>
 <td>pedCoords</td>
-<td>vector</td>
+<td>vector3/4</td>
 <td>No</td>
 <td>-</td>
 <td>You can use a vector3 or vector4 here, if only using a vector3 the heading will default to 0.0</td>
@@ -245,8 +254,209 @@ To do this simply add <code>shared_script '@extendedmode/imports.lua'</code> to 
 </table>
 <h3>Example</h3>
 
-<pre><code>local coords = GetEntityCoords(PlayerPedId())
+<pre><code class="lua">local coords = GetEntityCoords(PlayerPedId())
 local ped = ExM.Game.CreatePed(`a_m_m_acult_01`, vec4(coords.xyz, 180.0), true, 27)
+</code></pre>
+
+<hr />
+<h2 id="exmmarkersadd">ExM.Markers.Add<a class="headerlink" href="#exmmarkersadd" title="Permanent link">&para;</a></h2>
+<pre><code class="lua">ExM.Markers.Add(mType, mPos, red, green, blue, alpha, rangeToShow, bobUpAndDown, mScale, mRot, mDir, faceCamera, textureDict, textureName)
+</code></pre>
+
+<p>This function is a quick and easy way to create a marker and to draw it appropriately and efficiently without degrading performance
+<h3>Parameters</h3></p>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Data Type</th>
+<th>Optional</th>
+<th>Default Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>mType</td>
+<td>integer</td>
+<td>No</td>
+<td>-</td>
+<td>The type of marker you want to use <a href="https://docs.fivem.net/docs/game-references/markers/">List of Marker Types</a></td>
+</tr>
+<tr>
+<td>mPos</td>
+<td>vector3</td>
+<td>No</td>
+<td>-</td>
+<td>The position of where the marker is, you must use a vector3 here</td>
+</tr>
+<tr>
+<td>red</td>
+<td>integer</td>
+<td>No</td>
+<td>-</td>
+<td>The red channel of the colour you want the marker (0-255)</td>
+</tr>
+<tr>
+<td>green</td>
+<td>integer</td>
+<td>No</td>
+<td>-</td>
+<td>The green channel of the colour you want the marker (0-255)</td>
+</tr>
+<tr>
+<td>blue</td>
+<td>integer</td>
+<td>No</td>
+<td>-</td>
+<td>The blue channel of the colour you want the marker (0-255)</td>
+</tr>
+<tr>
+<td>alpha</td>
+<td>integer</td>
+<td>No</td>
+<td>-</td>
+<td>The alpha channel of the colour you want the marker (0-255)</td>
+</tr>
+<tr>
+<td>rangeToShow</td>
+<td>integer</td>
+<td>Yes</td>
+<td>50.0</td>
+<td>The range at which you want the marker to show</td>
+</tr>
+<tr>
+<td>bobUpAndDown</td>
+<td>boolean</td>
+<td>Yes</td>
+<td>false</td>
+<td>If you want the marker to bob up and down</td>
+</tr>
+<tr>
+<td>mScale</td>
+<td>vector3</td>
+<td>Yes</td>
+<td>vec(1, 1, 1)</td>
+<td>The size of the marker</td>
+</tr>
+<tr>
+<td>mRot</td>
+<td>vector3</td>
+<td>Yes</td>
+<td>vec(0, 0, 0)</td>
+<td>The rotation of the marker</td>
+</tr>
+<tr>
+<td>mDir</td>
+<td>vector3</td>
+<td>Yes</td>
+<td>vec(0, 0, 0)</td>
+<td>The direction of the marker</td>
+</tr>
+<tr>
+<td>faceCamera</td>
+<td>boolean</td>
+<td>Yes</td>
+<td>false</td>
+<td>If you want the marker to face the camera</td>
+</tr>
+<tr>
+<td>textureDict</td>
+<td>string</td>
+<td>Yes</td>
+<td>nil</td>
+<td>A custom texture dictionary if you want your own marker type</td>
+</tr>
+<tr>
+<td>textureName</td>
+<td>string</td>
+<td>Yes</td>
+<td>nil</td>
+<td>The name of the texture in the texture dictionary</td>
+</tr>
+</tbody>
+</table>
+<h3>Example</h3>
+
+<pre><code class="lua">-- This would create and store the marker in a variable, this is using custom textures from a Rockstar texture dictionary
+local marker = ExM.Markers.Add(1, vec(1224.128, 2710.614, 38.00576), 255, 0, 0, 100, 100.0, false, vec(5, 5, 2), vec(0, 0, 0), vec(0, 0, 0), false, &quot;mpmissmarkers256&quot;, &quot;special_vehicle_race_series&quot;)
+
+-- Or if you want a more simple circular marker you could do the following which only needs the marker type, pos and rgba values. It will use the default values for everything else
+local marker2 = ExM.Markers.Add(1, vec(1224.128, 2710.614, 38.00576), 255, 0, 0, 100)
+</code></pre>
+
+<hr />
+<h2 id="exmmarkersremove">ExM.Markers.Remove<a class="headerlink" href="#exmmarkersremove" title="Permanent link">&para;</a></h2>
+<pre><code class="lua">ExM.Markers.Remove(markerVar)
+</code></pre>
+
+<p>This function is for removing a marker you previously created with <a href="#exmmarkersadd">ExM.Markers.Add</a>
+<h3>Parameters</h3></p>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Data Type</th>
+<th>Optional</th>
+<th>Default Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>markerVar</td>
+<td>integer</td>
+<td>No</td>
+<td>-</td>
+<td>The variable of the marker you want to remove</td>
+</tr>
+</tbody>
+</table>
+<h3>Example</h3>
+
+<pre><code class="lua">-- Create the marker
+local marker = ExM.Markers.Add(1, vec(1224.128, 2710.614, 38.00576), 255, 0, 0, 100)
+
+-- Remove it later when you don't need it anymore
+ExM.Markers.Remove(marker)
+</code></pre>
+
+<hr />
+<h2 id="exmmarkersin">ExM.Markers.In<a class="headerlink" href="#exmmarkersin" title="Permanent link">&para;</a></h2>
+<pre><code class="lua">ExM.Markers.Remove(markerVar)
+</code></pre>
+
+<p>This function is for checking if you're in a marker you previously created with <a href="#exmmarkersadd">ExM.Markers.Add</a>
+<h3>Parameters</h3></p>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Data Type</th>
+<th>Optional</th>
+<th>Default Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>markerVar</td>
+<td>integer</td>
+<td>No</td>
+<td>-</td>
+<td>The variable of the marker you want to check</td>
+</tr>
+</tbody>
+</table>
+<h3>Example</h3>
+
+<pre><code class="lua">-- Create the marker
+local marker = ExM.Markers.Add(1, vec(1224.128, 2710.614, 38.00576), 255, 0, 0, 100)
+
+-- Check if you're standing in the marker (run this in a loop)
+if ExM.Markers.In(marker) then
+    -- You're in the marker, do some stuff here
+end
 </code></pre>
 
 <hr />
