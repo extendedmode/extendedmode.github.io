@@ -163,15 +163,16 @@
 </ul>
 <hr />
 <h2 id="installation">Installation<a class="headerlink" href="#installation" title="Permanent link">&para;</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Update your server artifact, you must be running server version <code>2371</code> or higher
+Find the latest versions here; <a href="https://runtime.fivem.net/artifacts/fivem/build_server_windows/master/">Windows</a> or <a href="https://runtime.fivem.net/artifacts/fivem/build_proot_linux/master/">Linux</a></p>
+</div>
 <ul>
 <li>Import <code>extendedmode.sql</code> in an SQL database</li>
-<li>Configure your <code>server.cfg</code> like the example below</li>
+<li>Add the follow items to your <code>server.cfg</code></li>
 </ul>
-<pre><code># The included fivem resource needs to be disabled at the moment due to a known issue with mapmanager, this will be fixed soon
-
-#ensure fivem
-
-add_principal group.admin group.user
+<pre><code>add_principal group.admin group.user
 add_ace resource.extendedmode command.add_ace allow
 add_ace resource.extendedmode command.add_principal allow
 add_ace resource.extendedmode command.remove_principal allow
