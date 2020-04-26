@@ -60,10 +60,16 @@
     <a class="current" href="./">Using extendedmode</a>
     <ul class="subnav">
             
-    <li class="toctree-l2"><a href="#downloading">Downloading</a></li>
+    <li class="toctree-l2"><a href="#requirements">Requirements</a></li>
     
 
-    <li class="toctree-l2"><a href="#installation">Installation</a></li>
+    <li class="toctree-l2"><a href="#standard-installation">Standard Installation</a></li>
+    
+
+    <li class="toctree-l2"><a href="#migration-to-extendedmode">Migration to extendedmode</a></li>
+    
+
+    <li class="toctree-l2"><a href="#troubleshooting">Troubleshooting</a></li>
     
 
     </ul>
@@ -136,41 +142,59 @@
               
                 <h1>Using extendedmode</h1>
 
-<hr />
-<p>Be warned that extendedmode is in ALPHA stages and is <strong>not</strong> ready for production use.</p>
-<p>If you already have an ESX installation please see <a href="">this</a> guide! (coming soon!)</p>
-<hr />
-<h2 id="downloading">Downloading<a class="headerlink" href="#downloading" title="Permanent link">&para;</a></h2>
-<p>While it is recommended that you organise your resources into sub directories, FXServer allows you to place resources anywhere in the <code>resources</code> provided that you do not place them within other resources or directories with names not surrounded by <code>[]</code>.</p>
-<hr />
-<h3>Using Git</h3>
-
+<div class="admonition danger">
+<p class="admonition-title">Danger</p>
+<p>extendedmode is in the <strong>BETA</strong> stage and is not yet recommended for production use however, if you know  what you're doing, you should be fine.</p>
+<p>Please report any bugs with as much detail as possible by <a href="https://github.com/extendedmode/extendedmode/issues/new">making an issue</a> on the extendedmode repository!</p>
+</div>
+<h2 id="requirements">Requirements<a class="headerlink" href="#requirements" title="Permanent link">#</a></h2>
 <ul>
-<li><code>cd resources</code></li>
-<li><code>git clone https://github.com/extendedmode/extendedmode extendedmode</code></li>
-<li><code>git clone https://github.com/ESX-Org/esx_menu_default esx_menu_default</code></li>
-<li><code>git clone https://github.com/ESX-Org/esx_menu_dialog esx_menu_dialog</code></li>
-<li><code>git clone https://github.com/ESX-Org/esx_menu_list esx_menu_list</code></li>
+<li>An installation of FXServer artifact 2371 or greater (You can find the latest artifacts here; <a href="https://runtime.fivem.net/artifacts/fivem/build_server_windows/master/">Windows</a> or <a href="https://runtime.fivem.net/artifacts/fivem/build_proot_linux/master/">Linux</a>)</li>
+<li>A fully configured installation of <a href="https://github.com/brouznouf/fivem-mysql-async">fivem-mysql-async</a> (or equivalent) version 3.2.0 or greater </li>
 </ul>
+<p>If you are installing extendedmode on a fresh installation of FXServer then follow the <a href="#standard-installation">Standard Installation</a> guide.<br />
+Otherwise, if you are replacing ESX with extendedmode then follow the <a href="#migration-to-extendedmode">Migration to extendedmode</a> guide.</p>
+<p>Both guides assume that you have knowledge of how to configure FXServer and that you know how to install resources so make sure you do.</p>
 <hr />
-<h3>Manually</h3>
+<h2 id="standard-installation">Standard Installation<a class="headerlink" href="#standard-installation" title="Permanent link">#</a></h2>
+<p>Installing extendedmode is almost exactly the same as installing ESX so if you've already done that before, this is a piece of cake!<br />
+If you haven't, don't worry, it's not <em>that</em> hard.</p>
+<p>This guide assumes that you have already installed the  <strong>latest</strong> version of FXServer (preferably  following <a href="https://docs.fivem.net/docs/server-manual/setting-up-a-server/">this</a> guide) and that you have a MySQL server setup and configured correctly with the <code>mysql-async</code> resource.<br />
+If you don't have those setup yet, go and do that first!</p>
+<h3>Downloading</h3>
 
+<p>First, you need to download extendedmode and ESX's UI resources, you can do this one of two ways:</p>
+<ul>
+<li>Manually downloading the latest releases from GitHub, easiest for beginners</li>
+<li>Cloning using Git, the preferred method as it simplifies the update process down the track</li>
+</ul>
+<h4>Manually</h4>
+
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>While it is recommended that you organise your resources into sub directories, FXServer allows you to place resources anywhere in the <code>resources</code> provided that you do not place them within other resources or directories with names not surrounded by <code>[]</code>.</p>
+</div>
 <ul>
 <li>Download <a href="https://github.com/extendedmode/extendedmode/releases/latest">extendedmode</a> into the <code>resources</code> directory</li>
 <li>Download <a href="https://github.com/ESX-Org/esx_menu_default/releases/latest">esx_menu_default</a> into the <code>resources</code> directory</li>
 <li>Download <a href="https://github.com/ESX-Org/esx_menu_dialog/releases/latest">esx_menu_dialog</a> into the <code>resources</code> directory</li>
 <li>Download <a href="https://github.com/ESX-Org/esx_menu_list/releases/latest">esx_menu_list</a> into the <code>resources</code> directory</li>
 </ul>
-<hr />
-<h2 id="installation">Installation<a class="headerlink" href="#installation" title="Permanent link">&para;</a></h2>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>You <strong>must</strong> be running server artifact <code>2371</code> or higher. Find the latest artifacts here; <a href="https://runtime.fivem.net/artifacts/fivem/build_server_windows/master/">Windows</a> or <a href="https://runtime.fivem.net/artifacts/fivem/build_proot_linux/master/">Linux</a></p>
-</div>
-<ul>
-<li>Import <code>extendedmode.sql</code> in an SQL database</li>
+<h4>Using Git</h4>
+
+<p>Running the following commands while within your server's <code>resources</code> directory will download all of the resources.</p>
+<pre><code class="sh">git clone https://github.com/extendedmode/extendedmode extendedmode
+git clone https://github.com/ESX-Org/esx_menu_default esx_menu_default
+git clone https://github.com/ESX-Org/esx_menu_dialog esx_menu_dialog
+git clone https://github.com/ESX-Org/esx_menu_list esx_menu_list
+</code></pre>
+
+<h3>Installation</h3>
+
+<ol>
+<li>Import <code>extendedmode.sql</code> into your SQL database</li>
 <li>Add the following items to your <code>server.cfg</code></li>
-</ul>
+</ol>
 <pre><code>add_principal group.admin group.user
 add_ace resource.extendedmode command.add_ace allow
 add_ace resource.extendedmode command.add_principal allow
@@ -184,7 +208,55 @@ ensure esx_menu_list
 ensure esx_menu_dialog
 </code></pre>
 
-<p>If all goes well, you will see the message <code>[ExtendedMode] [INFO] ExtendedMode has been initialized</code> appear in your server console without any errors.</p>
+<p>Now start your server as normal.<br />
+If all goes well, you will see the message <code>[ExtendedMode] [INFO] ExtendedMode has been initialized</code> appear in your server console without any errors.</p>
+<hr />
+<h2 id="migration-to-extendedmode">Migration to extendedmode<a class="headerlink" href="#migration-to-extendedmode" title="Permanent link">#</a></h2>
+<p>One of the goals of the extendedmode project is complete backwards compatibility with ESX and EssentialMode.<br />
+This means that the installation is essentially a drag and drop process, provided that all the dependencies are up-to-date.</p>
+<p>Before doing anything, <strong>take a backup</strong>.<br />
+extendedmode is <strong>beta</strong> software and while nothing bad <em>should</em> happen, if it does, a full backup of both your server and database will save you.  </p>
+<h3>Additional Requirements</h3>
+
+<ul>
+<li>An installation of <a href="https://github.com/kanersps/essentialmode">EssentialMode</a> &gt;= version 6.4.0</li>
+</ul>
+<h3>Installation</h3>
+
+<ol>
+<li>
+<p>Make <strong>absolutely sure</strong> that <strong>all</strong> of the requirements are met.<br />
+    The easiest way to do this is to update FXServer, EssentialMode and MySQL Async to their <strong>latest</strong> versions.<br />
+    extendedmode <strong>will not</strong> work on outdated versions of the dependencies.<br />
+    <br/></p>
+</li>
+<li>
+<p>Delete the <code>es_extended</code> folder from your <code>resources</code> folder. (may also be located in the <code>[essential]</code> folder)<br />
+<br/></p>
+</li>
+<li>
+<p>Download extendedmode into your <code>resources</code> folder.<br />
+    You can do this by either creating a folder named <code>extendedmode</code> in the resources folder and unzipping the content of <a href="https://github.com/extendedmode/extendedmode/archive/master.zip">this zip</a> into it or, if you have Git installed,<br />
+    running the command <code>git clone https://github.com/extendedmode/extendedmode extendedmode</code> while in the <code>resources</code> folder.<br />
+    <br/></p>
+</li>
+<li>
+<p>Add the following items to your <code>server.cfg</code>:</p>
+</li>
+</ol>
+<pre><code>add_principal group.admin group.user
+add_ace resource.extendedmode command.add_ace allow
+add_ace resource.extendedmode command.add_principal allow
+add_ace resource.extendedmode command.remove_principal allow
+</code></pre>
+
+<p>Now start your server as normal.<br />
+If all goes well, you will see the message <code>[ExtendedMode] [INFO] ExtendedMode has been initialized</code> appear in your server console without any errors.</p>
+<hr />
+<h2 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">#</a></h2>
+<p>Please make sure that you followed the appropriate guide and that you followed the guide's instructions exactly.<br />
+If you still can't not working or you are getting errors in your server console, please ask for help in the <a href="https://discord.gg/qKYBQH8">ExM Discord</a> in the <a href="https://discord.gg/9P4eDgA">#support channel</a> and be sure to provide as much detail as possible!</p>
+<p>If there are any common things people get stuck on or easily fixed errors, we'll add work arounds here!</p>
               
             </div>
           </div>
