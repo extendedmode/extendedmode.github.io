@@ -73,6 +73,15 @@
     <a class="current" href="./">Server Functions</a>
     <ul class="subnav">
             
+    <li class="toctree-l3"><a href="#exmgamespawnvehicle">ExM.Game.SpawnVehicle</a></li>
+    
+
+    <li class="toctree-l3"><a href="#exmgamecreateped">ExM.Game.CreatePed</a></li>
+    
+
+    <li class="toctree-l3"><a href="#exmgamespawnobject">ExM.Game.SpawnObject</a></li>
+    
+
     </ul>
                 </li>
     </ul>
@@ -141,6 +150,149 @@
 <p>For these functions to work you must be using the extendedmode method of importing functions.
 To do this simply add <code>shared_script '@extendedmode/imports.lua'</code> to your fxmanifest.lua.</p>
 </div>
+<hr />
+<h2 id="exmgamespawnvehicle">ExM.Game.SpawnVehicle<a class="headerlink" href="#exmgamespawnvehicle" title="Permanent link">#</a></h2>
+<div class="admonition warning">
+<p>OneSync Only</p>
+</div>
+<pre><code class="lua">ExM.Game.SpawnVehicle(model, coords)
+</code></pre>
+
+<p>This function is a quick and easy way to create a vehicle from the server, no model requesting needed as it's serverside. You can choose whether or not to store the vehicle in a variable.
+<h3>Parameters</h3></p>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Data Type</th>
+<th>Optional</th>
+<th>Default Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>model</td>
+<td>hash</td>
+<td>No</td>
+<td>-</td>
+<td>The model of the vehicle you want to create, can be a hash or a string</td>
+</tr>
+<tr>
+<td>coords</td>
+<td>vector3/4</td>
+<td>No</td>
+<td>-</td>
+<td>You can use a vector3 or vector4 here, if only using a vector3 the heading will default to 0.0</td>
+</tr>
+</tbody>
+</table>
+<h3>Example</h3>
+
+<pre><code class="lua">local coords = vec4(-383.644, -1864.176, 20.5, 335.2)
+local vehicle = ExM.Game.SpawnVehicle(`jester`, coords)
+</code></pre>
+
+<hr />
+<h2 id="exmgamecreateped">ExM.Game.CreatePed<a class="headerlink" href="#exmgamecreateped" title="Permanent link">#</a></h2>
+<div class="admonition warning">
+<p>OneSync Only</p>
+</div>
+<pre><code class="lua">ExM.Game.CreatePed(pedModel, pedCoords, pedType)
+</code></pre>
+
+<p>This function is a quick and easy way to create a ped from the server, no model requesting needed as it's serverside. You can choose whether or not to store the ped in a variable.
+<h3>Parameters</h3></p>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Data Type</th>
+<th>Optional</th>
+<th>Default Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>pedModel</td>
+<td>hash</td>
+<td>No</td>
+<td>-</td>
+<td>The model of the ped you want to spawn</td>
+</tr>
+<tr>
+<td>pedCoords</td>
+<td>vector3/4</td>
+<td>No</td>
+<td>-</td>
+<td>You can use a vector3 or vector4 here, if only using a vector3 the heading will default to 0.0</td>
+</tr>
+<tr>
+<td>pedType</td>
+<td>integer</td>
+<td>Yes</td>
+<td>4 (PED_TYPE_CIVMALE)</td>
+<td>The type of ped you want to use. <a href="https://hastebin.com/mecuguxipo">List of Ped Types</a></td>
+</tr>
+</tbody>
+</table>
+<h3>Example</h3>
+
+<pre><code class="lua">local coords = vec4(-383.644, -1864.176, 20.5, 335.2)
+local ped = ExM.Game.CreatePed(`a_m_m_acult_01`, coords.xyzw, 27)
+</code></pre>
+
+<hr />
+<h2 id="exmgamespawnobject">ExM.Game.SpawnObject<a class="headerlink" href="#exmgamespawnobject" title="Permanent link">#</a></h2>
+<div class="admonition warning">
+<p>OneSync Only</p>
+</div>
+<pre><code class="lua">ExM.Game.SpawnObject(object, coords, dynamic)
+</code></pre>
+
+<p>This function is a quick and easy way to create an object from the server, no model requesting needed as it's serverside. You can choose whether or not to store the object in a variable.
+<h3>Parameters</h3></p>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Data Type</th>
+<th>Optional</th>
+<th>Default Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>object</td>
+<td>hash</td>
+<td>No</td>
+<td>-</td>
+<td>The model of the object you want to spawn</td>
+</tr>
+<tr>
+<td>coords</td>
+<td>vector3</td>
+<td>No</td>
+<td>-</td>
+<td>The coordinates of where to spawn the object</td>
+</tr>
+<tr>
+<td>dynamic</td>
+<td>boolean</td>
+<td>Yes</td>
+<td>true</td>
+<td>If you want the object to be dynamic or not</td>
+</tr>
+</tbody>
+</table>
+<h3>Example</h3>
+
+<pre><code class="lua">local coords = vec3(-383.644, -1864.176, 20.5)
+local object = ExM.Game.SpawnObject(`prop_bin_05a`, coords.xyz, false)
+</code></pre>
+
 <hr />
               
             </div>
