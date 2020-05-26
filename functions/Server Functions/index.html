@@ -155,7 +155,7 @@ To do this simply add <code>shared_script '@extendedmode/imports.lua'</code> to 
 <div class="admonition warning">
 <p>OneSync Only</p>
 </div>
-<pre><code class="lua">ExM.Game.SpawnVehicle(model, coords)
+<pre><code class="lua">ExM.Game.SpawnVehicle(vehModel, vehCoords)
 </code></pre>
 
 <p>This function is a quick and easy way to create a vehicle from the server, no model requesting needed as it's serverside. You can choose whether or not to store the vehicle in a variable.
@@ -172,14 +172,14 @@ To do this simply add <code>shared_script '@extendedmode/imports.lua'</code> to 
 </thead>
 <tbody>
 <tr>
-<td>model</td>
+<td>vehModel</td>
 <td>hash</td>
 <td>No</td>
 <td>-</td>
 <td>The model of the vehicle you want to create, can be a hash or a string</td>
 </tr>
 <tr>
-<td>coords</td>
+<td>vehCoords</td>
 <td>vector3/4</td>
 <td>No</td>
 <td>-</td>
@@ -248,7 +248,7 @@ local ped = ExM.Game.CreatePed(`a_m_m_acult_01`, coords.xyzw, 27)
 <div class="admonition warning">
 <p>OneSync Only</p>
 </div>
-<pre><code class="lua">ExM.Game.SpawnObject(object, coords, dynamic)
+<pre><code class="lua">ExM.Game.SpawnObject(objectModel, objectCoords, isDynamic)
 </code></pre>
 
 <p>This function is a quick and easy way to create an object from the server, no model requesting needed as it's serverside. You can choose whether or not to store the object in a variable.
@@ -265,21 +265,21 @@ local ped = ExM.Game.CreatePed(`a_m_m_acult_01`, coords.xyzw, 27)
 </thead>
 <tbody>
 <tr>
-<td>object</td>
+<td>objectModel</td>
 <td>hash</td>
 <td>No</td>
 <td>-</td>
 <td>The model of the object you want to spawn</td>
 </tr>
 <tr>
-<td>coords</td>
+<td>objectCoords</td>
 <td>vector3</td>
 <td>No</td>
 <td>-</td>
 <td>The coordinates of where to spawn the object</td>
 </tr>
 <tr>
-<td>dynamic</td>
+<td>isDynamic</td>
 <td>boolean</td>
 <td>Yes</td>
 <td>true</td>
